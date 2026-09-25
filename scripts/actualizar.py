@@ -509,12 +509,21 @@ def update_index(articles: list[dict], quiz: list[dict]) -> None:
 
     text = INDEX.read_text(encoding="utf-8")
 
+    # Serialización segura para incrustar JSON dentro de una etiqueta <script>.
+    # Escapamos caracteres que podrían cerrar accidentalmente la etiqueta o
+    # introducir saltos interpretados por JavaScript.
     a_json = json.dumps(articles, ensure_ascii=False, separators=(",", ":"))
     q_json = json.dumps(quiz, ensure_ascii=False, separators=(",", ":"))
+    a_json = a_json.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    q_json = q_json.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
 
+    replacement = f"const ARTICLES = {a_json};\\nconst QUIZ = {q_json};"
+
+    # IMPORTANTE: usar una función como reemplazo evita que re.sub interprete
+    # secuencias con barra invertida procedentes del JSON (por ejemplo \\n).
     text, n1 = re.subn(
         r"const ARTICLES\s*=\s*.*?;\s*const QUIZ\s*=\s*.*?;",
-        f"const ARTICLES = {a_json};\nconst QUIZ = {q_json};",
+        lambda _m: replacement,
         text,
         count=1,
         flags=re.S,
@@ -533,6 +542,19 @@ def update_index(articles: list[dict], quiz: list[dict]) -> None:
         text,
         count=1,
     )
+
+    # Comprobaciones estructurales antes de sobrescribir el archivo.
+    required_fragments = [
+        "const ARTICLES = ",
+        "const QUIZ = ",
+        'id="newsGrid"',
+        'id="quizGrid"',
+        "drawCards();",
+        "drawQuiz();",
+    ]
+    missing = [x for x in required_fragments if x not in text]
+    if missing:
+        raise SystemExit("HTML generado incompleto. Faltan: " + ", ".join(missing))
 
     INDEX.write_text(text, encoding="utf-8")
 
