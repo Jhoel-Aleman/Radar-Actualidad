@@ -1,0 +1,76 @@
+name: Actualizar Radar de Actualidad
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Todos los días a las 6:17 a. m. hora de Honduras.
+    # Se evita el minuto 00 porque GitHub advierte que puede haber más carga al inicio de cada hora.
+    - cron: "17 6 * * *"
+      timezone: "America/Tegucigalpa"
+
+concurrency:
+  group: radar-actualidad-pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v6
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 feedparser python-dateutil
+
+      - name: Buscar noticias y actualizar HTML
+        run: python scripts/actualizar.py
+
+      - name: Validar JavaScript generado
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script(?:\\s[^>]*)?>(.*?)</script>", html, flags=re.S | re.I)
+          if not scripts:
+              raise SystemExit("No se encontró JavaScript en index.html")
+          Path("/tmp/radar.js").write_text("\\n".join(scripts), encoding="utf-8")
+          PY
+          node --check /tmp/radar.js
+
+      - name: Preparar sitio
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir sitio generado
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  publicar:
+    needs: construir
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
