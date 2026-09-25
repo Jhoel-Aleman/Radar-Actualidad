@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Radar de Actualidad: selección de noticias relevantes de Honduras de las últimas 48 horas, con prueba de actualidad para estudiantes de Periodismo.">
+<title>Radar de Actualidad</title>
+<style>
+:root {
+  --ink:#132231; --navy:#0c2438; --navy2:#163852; --paper:#f5f2eb; --card:#fffdf8;
+  --line:#d8d1c5; --muted:#68737d; --red:#8b2332; --gold:#b89452; --blue:#1b5d86;
+  --green:#23614f; --shadow:0 12px 30px rgba(16,35,50,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.52}
+a{color:inherit}
+.wrap{width:min(1200px,calc(100% - 30px));margin:auto}
+.topline{background:#081b2a;color:#d8e3ea;font-size:.8rem}
+.topline .wrap{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:8px 0;flex-wrap:wrap}
+.brand{background:var(--navy);color:white;border-bottom:4px solid var(--gold)}
+.brand-inner{padding:26px 0 22px;display:flex;justify-content:space-between;gap:24px;align-items:end}
+.kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:.16em;color:#d6c191;font-weight:800}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,6vw,5.4rem);letter-spacing:-.045em;line-height:.92;margin:8px 0 0}
+.brand-copy{max-width:430px;color:#dbe5ec;font-size:.95rem}
+.brand-copy strong{color:white}
+.nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;box-shadow:0 4px 18px rgba(14,31,46,.05)}
+.nav .wrap{display:flex;gap:10px;align-items:center;padding:10px 0;flex-wrap:wrap}
+.search{flex:1 1 260px;min-width:220px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;background:#fff;color:var(--ink)}
+.filter{border:1px solid var(--line);background:white;color:var(--ink);border-radius:999px;padding:8px 11px;cursor:pointer;font:inherit;font-size:.86rem}
+.filter.active{background:var(--navy);border-color:var(--navy);color:white}
+main{padding:26px 0 60px}
+.edition-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:24px}
+.stat{background:var(--card);padding:14px}
+.stat b{display:block;font-family:Georgia,serif;font-size:1.3rem}
+.stat span{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.feature{display:grid;grid-template-columns:1.25fr .75fr;gap:0;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:30px}
+.feature-media{min-height:390px;background:#d8dee3;overflow:hidden}
+.feature-media img{width:100%;height:100%;object-fit:cover;display:block}
+.feature-body{padding:28px;display:flex;flex-direction:column;justify-content:center}
+.category{color:var(--red);text-transform:uppercase;font-size:.76rem;letter-spacing:.12em;font-weight:900}
+.feature h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.02;margin:10px 0 14px;letter-spacing:-.025em}
+.feature p{color:#56646f;margin:0 0 18px}
+.meta{font-size:.8rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+.read{display:inline-flex;width:max-content;text-decoration:none;margin-top:18px;background:var(--navy);color:white;padding:10px 13px;border-radius:6px;font-weight:800;font-size:.87rem}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;border-bottom:2px solid var(--navy);padding-bottom:8px;margin:30px 0 16px}
+.section-head h2{font-family:Georgia,serif;font-size:1.85rem;margin:0}
+.section-head .small{font-size:.82rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;min-height:100%;box-shadow:0 5px 18px rgba(16,35,50,.05)}
+.thumb{aspect-ratio:16/9;background:#d9dfe3;overflow:hidden;position:relative}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s ease}
+.card:hover .thumb img{transform:scale(1.018)}
+.card-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.card-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
+.source{font-size:.74rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--blue)}
+.age{font-size:.74rem;color:var(--muted)}
+.card h3{font-family:Georgia,"Times New Roman",serif;font-size:1.22rem;line-height:1.16;margin:0 0 9px}
+.card p{font-size:.9rem;color:#5c6872;margin:0 0 12px}
+details{border-top:1px solid var(--line);padding-top:10px;margin-top:auto}
+details summary{cursor:pointer;font-weight:800;font-size:.84rem;color:var(--navy)}
+details ul{padding-left:18px;color:#65717b;font-size:.82rem;margin-bottom:0}
+.card .read{margin-top:12px}
+.hidden{display:none!important}
+.empty{display:none;padding:40px 0;text-align:center;color:var(--muted)}
+.quiz{margin-top:42px;background:#f0ece3;border:1px solid var(--line);padding:26px}
+.quiz-head{max-width:820px}
+.quiz h2{font-family:Georgia,serif;font-size:2rem;margin:0 0 7px}
+.quiz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.q{background:var(--card);border:1px solid var(--line);padding:17px}
+.qnum{font-weight:900;color:var(--red);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em}
+.qtype{font-size:.78rem;color:var(--muted);margin:3px 0 9px}
+.q h3{font-family:Georgia,serif;font-size:1.06rem;line-height:1.35;margin:0 0 12px}
+textarea{width:100%;min-height:105px;border:1px solid var(--line);padding:10px;background:#fff;color:var(--ink);font:inherit;resize:vertical}
+.solutions{margin-top:16px;background:var(--card);border:1px solid var(--line);padding:18px}
+.solution{border-top:1px solid var(--line);padding:14px 0}
+.solution:first-child{border-top:0;padding-top:0}
+.solution h3{font-size:1rem;margin:0 0 6px}
+.solution p{font-size:.9rem;color:#5d6973;margin:0 0 7px}
+.solution a{font-weight:800;color:var(--blue)}
+.sources{margin-top:28px;background:var(--card);border:1px solid var(--line);padding:20px}
+.sources h2{font-family:Georgia,serif;margin:0 0 10px}
+.source-pills{display:flex;gap:8px;flex-wrap:wrap}
+.source-pills a{text-decoration:none;border:1px solid var(--line);padding:7px 10px;border-radius:999px;font-size:.82rem;background:white}
+.note{font-size:.82rem;color:var(--muted);margin-top:12px}
+footer{background:#081b2a;color:#bdcbd4;padding:24px 0;font-size:.82rem}
+footer strong{color:white}
+@media(max-width:900px){.feature{grid-template-columns:1fr}.feature-media{min-height:280px}.grid{grid-template-columns:repeat(2,1fr)}.edition-bar{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.brand-inner{align-items:flex-start;flex-direction:column}.grid,.quiz-grid{grid-template-columns:1fr}.feature-body{padding:20px}.edition-bar{grid-template-columns:1fr 1fr}}
+@media print{.nav,.read,textarea,footer{display:none!important}body{background:white}.card,.feature,.quiz,.sources{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="topline">
+  <div class="wrap">
+    <span>Radar de Actualidad · Edición del 25 de septiembre de 2026</span>
+    <span>Proyecto y edición: <strong>Jhoel Aleman</strong></span>
+  </div>
+</div>
+
+<header class="brand">
+  <div class="wrap brand-inner">
+    <div>
+      <div class="kicker">PERIODISMO INFORMATIVO</div>
+      <h1>Radar de Actualidad</h1>
+    </div>
+    <div class="brand-copy">
+      Selección de <strong>alto impacto nacional</strong>, sin repetir el mismo acontecimiento entre medios.
+      Solo se conservan noticias de las <strong>últimas 48 horas</strong>.
+    </div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <input id="search" class="search" type="search" placeholder="Buscar por tema, institución, cifra o medio…" aria-label="Buscar noticias">
+    <div id="filters"></div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="edition-bar">
+    <div class="stat"><b id="liveCount">14</b><span>noticias seleccionadas</span></div>
+    <div class="stat"><b>10</b><span>medios monitoreados</span></div>
+    <div class="stat"><b>48 h</b><span>ventana máxima</span></div>
+    <div class="stat"><b>5</b><span>preguntas de actualidad</span></div>
+  </section>
+
+  <section id="featured"></section>
+
+  <div class="section-head">
+    <div>
+      <h2>Panorama nacional</h2>
+      <div class="small">Prioridad: política pública, seguridad, economía, salud, educación, ambiente, migración y hechos de repercusión nacional.</div>
+    </div>
+    <div id="counter" class="small"></div>
+  </div>
+
+  <section id="newsGrid" class="grid"></section>
+  <div id="empty" class="empty">No hay noticias vigentes que coincidan con este filtro.</div>
+
+  <section class="quiz">
+    <div class="quiz-head">
+      <div class="category">Ejercicio diario</div>
+      <h2>Prueba de Actualidad</h2>
+      <p class="note">Cinco preguntas de análisis construidas a partir de las noticias de esta edición. Las respuestas y fuentes están ocultas hasta que abras el solucionario.</p>
+    </div>
+    <div id="quizGrid" class="quiz-grid"></div>
+    <details class="solutions">
+      <summary><strong>Finalizar prueba · ver respuestas correctas y fuentes</strong></summary>
+      <div id="solutions"></div>
+    </details>
+  </section>
+
+  <section class="sources">
+    <h2>Fuentes monitoreadas</h2>
+    <div class="source-pills"><a href="https://www.latribuna.hn/" target="_blank" rel="noopener noreferrer">La Tribuna</a><a href="https://tiempo.hn/" target="_blank" rel="noopener noreferrer">Diario Tiempo</a><a href="https://www.radiohrn.hn/" target="_blank" rel="noopener noreferrer">Radio HRN</a><a href="https://hch.tv/" target="_blank" rel="noopener noreferrer">HCH</a><a href="https://www.tunota.com/" target="_blank" rel="noopener noreferrer">TuNota</a><a href="https://proceso.hn/" target="_blank" rel="noopener noreferrer">Proceso Digital</a><a href="https://www.laprensa.hn/" target="_blank" rel="noopener noreferrer">La Prensa</a><a href="https://www.elheraldo.hn/" target="_blank" rel="noopener noreferrer">El Heraldo</a><a href="https://oncenoticias.hn/" target="_blank" rel="noopener noreferrer">Once Noticias</a><a href="https://www.diez.hn/" target="_blank" rel="noopener noreferrer">Diez</a></div>
+    <p class="note">La inclusión de un medio no implica respaldo editorial. El objetivo es ampliar cobertura, contrastar hechos y evitar que una sola agenda informativa domine la selección. La Tribuna puede presentar restricciones técnicas de acceso automatizado en algunas ediciones.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Proyecto y edición: Jhoel Aleman.</strong> Desarrollo asistido por inteligencia artificial:
+    <strong>ChatGPT de OpenAI, modelo GPT-5.6 Sol.</strong>
+    Los resúmenes son material de estudio; para el contexto completo consulta siempre la fuente original.
+  </div>
+</footer>
+
+<script>
+const ARTICLES = [{"title": "Expertos proyectan que la inflación de Honduras superará 6% al cierre de 2026", "url": "https://www.elheraldo.hn/economia/expertos-proyectan-inflacion-de-honduras-superara-6-al-cierre-de-2026-AF32152165", "source": "El Heraldo", "publishedAt": "2026-09-25T09:01:00-06:00", "dateLabel": "25 sep · 9:01 a. m.", "category": "Economía", "summary": "El Heraldo recoge proyecciones de economistas que sitúan la inflación de cierre por encima de 6%. El BCH reportaba a agosto 6.20% interanual y había elevado la Tasa de Política Monetaria a 6%.", "keys": ["Inflación interanual a agosto: 6.20%", "TPM: 6%", "La proyección de cierre es una estimación, no un dato definitivo"], "image": "https://www.elheraldo.hn/binrepository/1259x945/0c0/0d0/none/45933/WICS/huevos1_15694087_20260925091443.jpg", "featured": true}, {"title": "Ministerio Público pide más fiscales y presupuesto para fortalecer la persecución penal", "url": "https://www.laprensa.hn/honduras/ministerio-publico-pide-fiscales-presupuesto-persecucion-penal-MF32151850", "source": "La Prensa", "publishedAt": "2026-09-25T08:36:00-06:00", "dateLabel": "25 sep · 8:36 a. m.", "category": "Seguridad y justicia", "summary": "El fiscal general Pablo Emilio Reyes afirmó que el Ministerio Público cuenta con unos 796 fiscales y planteó elevar la capacidad institucional, además de aumentar los recursos presupuestarios.", "keys": ["MP: unos 796 fiscales actualmente", "El fiscal general plantea ampliar capacidad y recursos", "La petición presupuestaria no equivale a una asignación ya aprobada"], "image": "https://www.laprensa.hn/binrepository/1260x945/0c0/0d0/none/11004/GHGR/plantilla-de-medida-de-fotos-la-pren_15693823_20260925084700.jpg"}, {"title": "Diputados conocen ley especial para combatir el narcotráfico de drogas sintéticas", "url": "https://proceso.hn/diputados-conocen-ley-especial-para-combatir-el-narcotrafico-de-drogas-sinteticas/", "source": "Proceso Digital", "publishedAt": "2026-09-25T09:00:00-06:00", "dateLabel": "25 sep", "category": "Seguridad y justicia", "summary": "El Congreso conoce una iniciativa de Ley Especial de Precursores Químicos y Sanción de Narcotráfico Sintético. El proyecto fue remitido a comisiones para su análisis.", "keys": ["Tema: precursores químicos y drogas sintéticas", "El proyecto fue remitido a comisiones", "Es una propuesta legislativa, no una ley vigente todavía"], "image": "https://proceso.hn/wp-content/uploads/2026/09/Marlon-Lara-696x461.jpg"}, {"title": "EE. UU. destaca la decisión de Honduras de declarar terroristas a grupos criminales", "url": "https://www.radiohrn.hn/estados-unidos-destaca-decision-de-honduras-de-declarar-terroristas-a-grupos-criminales-2026-09-25", "source": "Radio HRN", "publishedAt": "2026-09-25T12:57:00-06:00", "dateLabel": "25 sep · 12:57 p. m.", "category": "Seguridad y justicia", "summary": "HRN informó que Estados Unidos expresó respaldo a la decisión hondureña de designar como terroristas a tres estructuras criminales. La nota se enmarca en el nuevo enfoque de seguridad del país.", "keys": ["Tema: designación de estructuras criminales", "Reacción diplomática de Estados Unidos", "Distinguir la decisión hondureña de la valoración estadounidense"], "image": "https://www.radiohrn.hn/wp-content/uploads/2026/09/principal_eeuu_celebra_honduras_terroristas.jpg"}, {"title": "Analizan reforma para destinar dinero incautado a seguridad y justicia", "url": "https://www.laprensa.hn/honduras/san-pedro-sula-tomas-zambrano-plantea-usar-dinero-incautado-fortalecer-seguridad-KF32152668", "source": "La Prensa", "publishedAt": "2026-09-25T09:27:00-06:00", "dateLabel": "25 sep · 9:27 a. m.", "category": "Política y gobierno", "summary": "El presidente del Congreso, Tomás Zambrano, dijo que se analiza una reforma para permitir el uso temporal de recursos incautados al crimen organizado mientras continúan procesos judiciales.", "keys": ["La propuesta está en análisis", "Fondos mencionados: entre L800 y L1,000 millones según Zambrano", "El mecanismo tendría que contemplar restitución si una sentencia ordena devolver los bienes"], "image": "https://www.laprensa.hn/binrepository/1260x945/0c0/0d0/none/11004/UHGR/plantilla-de-medida-de-fotos-la-pren_15694337_20260925094949.jpg"}, {"title": "Apagones de hasta ocho horas golpean a comercios y MIPYMES", "url": "https://oncenoticias.hn/nacionales/apagones-honduras-perdidas-10-millones-diarios-mipymes/", "source": "Once Noticias", "publishedAt": "2026-09-25T10:30:00-06:00", "dateLabel": "25 sep", "category": "Economía", "summary": "Once Noticias recoge reportes de sectores productivos que estiman pérdidas de hasta L10 millones diarios cuando se producen racionamientos prolongados, especialmente en la zona norte.", "keys": ["Cifra reportada por sectores consultados: hasta L10 millones diarios", "Cortes mencionados: hasta ocho horas", "La cifra es una estimación gremial, no un cálculo oficial auditado"], "image": null}, {"title": "Paro médico profundiza dificultades en centros públicos de salud", "url": "https://oncenoticias.hn/nacionales/paro-medico-agrava-la-crisis-sanitaria-y-golpea-a-los-sectores-mas-pobres-de-honduras/", "source": "Once Noticias", "publishedAt": "2026-09-25T10:15:00-06:00", "dateLabel": "25 sep", "category": "Salud", "summary": "La cobertura describe reducción de atenciones y mayores tiempos de espera en centros de salud de la zona norte durante el paro médico, además de testimonios sobre costos adicionales para pacientes.", "keys": ["Impacto reportado: menos atención y más espera", "Zona destacada: norte de Honduras", "Conviene separar testimonios de pacientes de datos oficiales del sistema"], "image": null}, {"title": "Honduras proyecta exportar más de 100 contenedores de camarón a China", "url": "https://hch.tv/honduras-proyecta-exportar-mas-de-100-contenedores-de-camaron-a-china-en-2026/", "source": "HCH", "publishedAt": "2026-09-25T08:15:00-06:00", "dateLabel": "25 sep", "category": "Economía", "summary": "HCH reporta el lanzamiento de un programa de exportación de camarón a China. La primera etapa contempla 1.2 millones de kilogramos y el objetivo es superar 100 contenedores antes de finalizar 2026.", "keys": ["Primera exportación: 1.2 millones de kg", "Meta: más de 100 contenedores", "Destino: mercado chino"], "image": "https://hch.tv/wp-content/uploads/2026/09/Honduras-proyecta-exportar-mas-de-100-contenedores-de-camaron-a-China-en-2026.jpg"}, {"title": "Fenagh advierte dificultades para la cosecha de postrera por falta de crédito y seguro", "url": "https://proceso.hn/cosecha-de-postrera-esta-en-el-aire-no-hay-credito-ni-seguro-para-el-productor-fenagh/", "source": "Proceso Digital", "publishedAt": "2026-09-25T08:45:00-06:00", "dateLabel": "25 sep", "category": "Economía", "summary": "La Fenagh advirtió que productores enfrentan falta de crédito, seguro agrícola y altos costos en el inicio de la siembra de postrera, además del impacto acumulado de la sequía.", "keys": ["Sector: agricultura y ganadería", "Problemas señalados: crédito, seguro y costos", "Riesgo señalado por el gremio: menor producción y presión sobre seguridad alimentaria"], "image": "https://proceso.hn/wp-content/uploads/2026/02/Jose-Chacon-696x387.jpg"}, {"title": "España prevé 2,000 plazas temporales para trabajadores hondureños en 2027", "url": "https://www.tunota.com/honduras-hoy/hondurenos-trabajen-legalmente-espana-plazas-requisitos-2026-09-24", "source": "TuNota", "publishedAt": "2026-09-24T19:57:00-06:00", "dateLabel": "24 sep · 7:57 p. m.", "category": "Empleo y migración", "summary": "España prevé incorporar a unos 2,000 trabajadores hondureños mediante el programa GECCO. La contratación se realiza en origen y contempla trabajo temporal, principalmente agrícola, con retorno al país.", "keys": ["Plazas previstas: 2,000", "Programa: GECCO", "Modelo: migración laboral regular y temporal"], "image": "https://www.tunota.com/wp-content/uploads/2026/09/principal_hondurenos_trabajo_espana.webp"}, {"title": "Honduras será sede de la Cumbre Iberoamericana de 2028", "url": "https://www.tunota.com/mundo/honduras-sera-sede-cumbre-iberoamericana-2028-tras-voto-unanime-2026-09-24", "source": "TuNota", "publishedAt": "2026-09-24T13:03:00-06:00", "dateLabel": "24 sep · 1:03 p. m.", "category": "Internacional", "summary": "Honduras fue seleccionada como sede de la Cumbre Iberoamericana de Jefes de Estado y de Gobierno de 2028, después de la cumbre prevista para 2026 en Madrid.", "keys": ["Evento: Cumbre Iberoamericana", "Sede hondureña: 2028", "Comunidad Iberoamericana: 22 países"], "image": "https://www.tunota.com/wp-content/uploads/2026/09/principal_cumbre_iberoamericana_honduras_sede.webp"}, {"title": "Debate educativo: propuesta de Plan de Lectura de Biblia y Valores en escuelas públicas", "url": "https://www.radiohrn.hn/mario-banegas-plan-lectura-biblia-y-valores-escuelas-honduras-2026-09-25", "source": "Radio HRN", "publishedAt": "2026-09-25T11:50:00-06:00", "dateLabel": "25 sep · 11:50 a. m.", "category": "Educación", "summary": "HRN explica una iniciativa legislativa para impulsar un Plan Nacional de Lectura de Biblia y Valores. La propia nota recuerda que el artículo 151 de la Constitución establece el carácter laico de la educación nacional.", "keys": ["Es una iniciativa en proceso de socialización", "Constitución, art. 151: educación nacional laica", "El diputado proponente ha planteado una opción de exclusión para familias que no estén de acuerdo"], "image": "https://www.radiohrn.hn/wp-content/uploads/2026/09/principal_biblia_honduras_educacion-.jpg"}, {"title": "Occidente y sur tendrán lluvias dispersas; la mayor parte del país seguirá cálida", "url": "https://www.elheraldo.hn/honduras/habra-lluvias-condiciones-clima-viernes-25-septiembre-honduras-copeco-CE32149685", "source": "El Heraldo", "publishedAt": "2026-09-24T18:23:00-06:00", "dateLabel": "24 sep · 6:23 p. m.", "category": "Ambiente y clima", "summary": "El pronóstico citado por El Heraldo prevé condiciones secas y cálidas en gran parte del país, con lluvias y chubascos dispersos en sectores del occidente y sur durante la tarde.", "keys": ["Occidente y sur: lluvias dispersas", "Resto del país: predominio seco y cálido", "Pronóstico: puede cambiar con nuevas actualizaciones de Copeco/Cenaos"], "image": "https://www.elheraldo.hn/binrepository/1260x945/0c0/0d0/none/45933/SEHM/el-heraldo_15691338_20260924183306.jpg"}, {"title": "Honduras debuta ante Surinam en la Liga de Naciones de Concacaf", "url": "https://www.diez.hn/internacionales/partidos-de-hoy-en-la-liga-de-naciones-uefa-concacaf-debuta-honduras-francia-italia-mbappe-zidane-resultados-IF32151292", "source": "Diez", "publishedAt": "2026-09-25T06:18:00-06:00", "dateLabel": "25 sep · 6:18 a. m.", "category": "Deportes", "summary": "La selección de Honduras inicia su participación en la nueva edición de la Liga de Naciones de Concacaf con un partido ante Surinam en Tegucigalpa.", "keys": ["Competencia: Liga de Naciones de Concacaf", "Rival: Surinam", "Sede: Estadio Nacional de Tegucigalpa"], "image": "https://www.diez.hn/binrepository/900x675/0c0/0d0/none/3014757/TJRS/nations-league-1_15693135_20260925062224.jpg"}];
+const QUIZ = [{"n": 1, "type": "Economía · El Heraldo", "q": "La inflación interanual a agosto fue de 6.20%, pero varios economistas proyectan un cierre anual superior a 6%. ¿Qué diferencia debe explicar un periodista entre ambos datos para no confundir al público?", "a": "La inflación interanual observada es un dato ya medido para un período concreto; la cifra de cierre es una proyección. Deben presentarse por separado, con su fecha, fuente y grado de certeza.", "url": "https://www.elheraldo.hn/economia/expertos-proyectan-inflacion-de-honduras-superara-6-al-cierre-de-2026-AF32152165", "source": "El Heraldo"}, {"n": 2, "type": "Seguridad y justicia · La Prensa", "q": "El Ministerio Público plantea que necesita más fiscales y recursos. ¿Por qué este dato es relevante al analizar nuevas leyes de seguridad, y qué no puede concluirse solo con aumentar presupuesto o personal?", "a": "Porque la capacidad institucional condiciona la investigación y persecución penal. Sin embargo, más presupuesto o fiscales no garantizan por sí solos mejores resultados: también importan gestión, coordinación, controles, carga de casos y evaluación de resultados.", "url": "https://www.laprensa.hn/honduras/ministerio-publico-pide-fiscales-presupuesto-persecucion-penal-MF32151850", "source": "La Prensa"}, {"n": 3, "type": "Salud · Once Noticias", "q": "En una cobertura sobre un paro médico, ¿qué fuentes adicionales deberían buscarse para comprobar el alcance real del impacto más allá de testimonios de pacientes?", "a": "Autoridades de Salud y hospitales, representantes del Colegio Médico o del gremio, datos de consultas suspendidas, emergencias atendidas, abastecimiento de medicamentos y cifras comparables de días normales.", "url": "https://oncenoticias.hn/nacionales/paro-medico-agrava-la-crisis-sanitaria-y-golpea-a-los-sectores-mas-pobres-de-honduras/", "source": "Once Noticias"}, {"n": 4, "type": "Educación · Radio HRN", "q": "La propuesta de lectura de Biblia y Valores se presenta en un sistema educativo constitucionalmente laico. ¿Qué elementos debería contrastar una cobertura periodística para informar el debate sin convertirlo en opinión?", "a": "El texto exacto de la iniciativa, el artículo 151 constitucional, la forma de implementación, el carácter voluntario u obligatorio, la posición de Educación, docentes y familias, y argumentos jurídicos de distintas partes.", "url": "https://www.radiohrn.hn/mario-banegas-plan-lectura-biblia-y-valores-escuelas-honduras-2026-09-25", "source": "Radio HRN"}, {"n": 5, "type": "Empleo y migración · TuNota", "q": "¿Por qué las 2,000 plazas previstas en España deben explicarse como migración laboral temporal y no como 2,000 empleos permanentes garantizados?", "a": "Porque se trata de una previsión dentro del programa GECCO: la contratación es en origen, depende de selección y requisitos, se realiza por temporada y contempla el retorno del trabajador a Honduras.", "url": "https://www.tunota.com/honduras-hoy/hondurenos-trabajen-legalmente-espana-plazas-requisitos-2026-09-24", "source": "TuNota"}];
+const MAX_AGE = 48 * 60 * 60 * 1000;
+let activeCategory = "Todas";
+
+const grid = document.getElementById("newsGrid");
+const featured = document.getElementById("featured");
+const filters = document.getElementById("filters");
+const search = document.getElementById("search");
+const counter = document.getElementById("counter");
+const empty = document.getElementById("empty");
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+
+function isFresh(a) {
+  const t = new Date(a.publishedAt).getTime();
+  const diff = Date.now() - t;
+  return Number.isFinite(t) && diff <= MAX_AGE && diff >= -6*60*60*1000;
+}
+function ageLabel(dt) {
+  const h = Math.max(0,(Date.now()-new Date(dt).getTime())/3600000);
+  if (h < 1) return "hace menos de 1 h";
+  if (h < 24) return "hace " + Math.floor(h) + " h";
+  return "hace " + Math.floor(h/24) + " día";
+}
+function fallbackSvg(cat) {
+  const safe = esc(cat);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675">
+  <rect width="1200" height="675" fill="#0c2438"/>
+  <rect x="0" y="0" width="1200" height="12" fill="#b89452"/>
+  <text x="68" y="285" fill="#fff" font-size="50" font-family="Georgia" font-weight="700">Radar de Actualidad</text>
+  <text x="68" y="350" fill="#d6c191" font-size="28" font-family="Arial">${safe}</text>
+  <text x="68" y="405" fill="#b8c8d2" font-size="22" font-family="Arial">Vista previa no disponible</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
+}
+async function tryPreview(img) {
+  if (img.dataset.fallbackTried === "1") {
+    img.src = fallbackSvg(img.dataset.category || "Actualidad");
+    return;
+  }
+  img.dataset.fallbackTried = "1";
+  const articleUrl = img.dataset.article;
+  const cacheKey = "radar-img:"+articleUrl;
+  try {
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) { img.src = cached; return; }
+    const r = await fetch("https://api.microlink.io/?url="+encodeURIComponent(articleUrl)+"&filter=image.url");
+    if (!r.ok) throw new Error("preview");
+    const j = await r.json();
+    const u = j && j.data && j.data.image && j.data.image.url;
+    if (!u) throw new Error("no image");
+    localStorage.setItem(cacheKey,u);
+    img.src = u;
+  } catch(e) {
+    img.src = fallbackSvg(img.dataset.category || "Actualidad");
+  }
+}
+function imgTag(a, cls="") {
+  const src = a.image || fallbackSvg(a.category);
+  return `<img class="${cls}" src="${esc(src)}" loading="lazy" referrerpolicy="no-referrer"
+    data-article="${esc(a.url)}" data-category="${esc(a.category)}"
+    alt="Vista previa de ${esc(a.title)}" onerror="tryPreview(this)">`;
+}
+function freshArticles() { return ARTICLES.filter(isFresh); }
+
+function drawFeatured(all) {
+  const f = all.find(a => a.featured) || all[0];
+  if (!f) { featured.innerHTML=""; return; }
+  featured.innerHTML = `<article class="feature">
+    <div class="feature-media">${imgTag(f)}</div>
+    <div class="feature-body">
+      <div class="category">${esc(f.category)} · noticia destacada</div>
+      <h2>${esc(f.title)}</h2>
+      <p>${esc(f.summary)}</p>
+      <div class="meta"><span>${esc(f.source)}</span><span>•</span><span>${esc(f.dateLabel)}</span><span>•</span><span>${ageLabel(f.publishedAt)}</span></div>
+      <a class="read" href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">Leer fuente original ↗</a>
+    </div>
+  </article>`;
+}
+function drawFilters(all) {
+  const cats = ["Todas", ...new Set(all.map(a => a.category))];
+  filters.innerHTML = cats.map(c => `<button class="filter ${c===activeCategory?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+  filters.querySelectorAll("button").forEach(b => b.onclick = () => {
+    activeCategory = b.dataset.cat;
+    drawFilters(freshArticles());
+    drawCards();
+  });
+}
+function drawCards() {
+  const all = freshArticles();
+  const q = search.value.trim().toLowerCase();
+  const shown = all.filter(a => {
+    const cat = activeCategory==="Todas" || a.category===activeCategory;
+    const hay = [a.title,a.summary,a.source,a.category,...a.keys].join(" ").toLowerCase();
+    return cat && (!q || hay.includes(q));
+  });
+  grid.innerHTML = shown.map(a => `<article class="card">
+    <div class="thumb">${imgTag(a)}</div>
+    <div class="card-body">
+      <div class="card-top"><span class="source">${esc(a.source)} · ${esc(a.category)}</span><span class="age">${ageLabel(a.publishedAt)}</span></div>
+      <h3>${esc(a.title)}</h3>
+      <p>${esc(a.summary)}</p>
+      <details><summary>Claves para estudiar</summary><ul>${a.keys.map(k=>`<li>${esc(k)}</li>`).join("")}</ul></details>
+      <a class="read" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">Fuente original ↗</a>
+    </div>
+  </article>`).join("");
+  counter.textContent = `${shown.length} visibles · ${all.length} vigentes`;
+  document.getElementById("liveCount").textContent = all.length;
+  empty.style.display = shown.length ? "none" : "block";
+}
+function drawQuiz() {
+  const qg = document.getElementById("quizGrid");
+  const sol = document.getElementById("solutions");
+  qg.innerHTML = QUIZ.map(q => `<article class="q">
+    <div class="qnum">Pregunta ${q.n}</div>
+    <div class="qtype">${esc(q.type)}</div>
+    <h3>${esc(q.q)}</h3>
+    <textarea placeholder="Escribe tu respuesta antes de abrir el solucionario…"></textarea>
+  </article>`).join("");
+  sol.innerHTML = QUIZ.map(q => `<div class="solution">
+    <h3>${q.n}. ${esc(q.type)}</h3>
+    <p><strong>Respuesta esperada:</strong> ${esc(q.a)}</p>
+    <a href="${esc(q.url)}" target="_blank" rel="noopener noreferrer">Abrir fuente — ${esc(q.source)} ↗</a>
+  </div>`).join("");
+}
+
+search.addEventListener("input", drawCards);
+const initial = freshArticles();
+drawFeatured(initial);
+drawFilters(initial);
+drawCards();
+drawQuiz();
+setInterval(() => {
+  const all = freshArticles();
+  drawFeatured(all);
+  drawFilters(all);
+  drawCards();
+}, 300000);
+</script>
+</body>
+</html>
