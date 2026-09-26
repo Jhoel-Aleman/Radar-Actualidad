@@ -1,312 +1,45 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Radar de Actualidad: selección de noticias relevantes de Honduras de las últimas 48 horas, con prueba de actualidad para estudiantes de Periodismo.">
-<title>Radar de Actualidad</title>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Radar de Actualidad: noticias relevantes de Honduras de ayer y hoy para estudio periodístico.">
+<title>Radar de Actualidad — 26 de septiembre de 2026</title>
 <style>
-:root {
-  --ink:#132231; --navy:#0c2438; --navy2:#163852; --paper:#f5f2eb; --card:#fffdf8;
-  --line:#d8d1c5; --muted:#68737d; --red:#8b2332; --gold:#b89452; --blue:#1b5d86;
-  --green:#23614f; --shadow:0 12px 30px rgba(16,35,50,.08);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.52}
-a{color:inherit}
-.wrap{width:min(1200px,calc(100% - 30px));margin:auto}
-.topline{background:#081b2a;color:#d8e3ea;font-size:.8rem}
-.topline .wrap{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:8px 0;flex-wrap:wrap}
-.brand{background:var(--navy);color:white;border-bottom:4px solid var(--gold)}
-.brand-inner{padding:26px 0 22px;display:flex;justify-content:space-between;gap:24px;align-items:end}
-.kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:.16em;color:#d6c191;font-weight:800}
-h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,6vw,5.4rem);letter-spacing:-.045em;line-height:.92;margin:8px 0 0}
-.brand-copy{max-width:430px;color:#dbe5ec;font-size:.95rem}
-.brand-copy strong{color:white}
-.nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;box-shadow:0 4px 18px rgba(14,31,46,.05)}
-.nav .wrap{display:flex;gap:10px;align-items:center;padding:10px 0;flex-wrap:wrap}
-.search{flex:1 1 260px;min-width:220px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;background:#fff;color:var(--ink)}
-.filter{border:1px solid var(--line);background:white;color:var(--ink);border-radius:999px;padding:8px 11px;cursor:pointer;font:inherit;font-size:.86rem}
-.filter.active{background:var(--navy);border-color:var(--navy);color:white}
-main{padding:26px 0 60px}
-.edition-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:24px}
-.stat{background:var(--card);padding:14px}
-.stat b{display:block;font-family:Georgia,serif;font-size:1.3rem}
-.stat span{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.feature{display:grid;grid-template-columns:1.25fr .75fr;gap:0;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:30px}
-.feature-media{min-height:390px;background:#d8dee3;overflow:hidden}
-.feature-media img{width:100%;height:100%;object-fit:cover;display:block}
-.feature-body{padding:28px;display:flex;flex-direction:column;justify-content:center}
-.category{color:var(--red);text-transform:uppercase;font-size:.76rem;letter-spacing:.12em;font-weight:900}
-.feature h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.02;margin:10px 0 14px;letter-spacing:-.025em}
-.feature p{color:#56646f;margin:0 0 18px}
-.meta{font-size:.8rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
-.read{display:inline-flex;width:max-content;text-decoration:none;margin-top:18px;background:var(--navy);color:white;padding:10px 13px;border-radius:6px;font-weight:800;font-size:.87rem}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;border-bottom:2px solid var(--navy);padding-bottom:8px;margin:30px 0 16px}
-.section-head h2{font-family:Georgia,serif;font-size:1.85rem;margin:0}
-.section-head .small{font-size:.82rem;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;min-height:100%;box-shadow:0 5px 18px rgba(16,35,50,.05)}
-.thumb{aspect-ratio:16/9;background:#d9dfe3;overflow:hidden;position:relative}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s ease}
-.card:hover .thumb img{transform:scale(1.018)}
-.card-body{padding:16px;display:flex;flex-direction:column;flex:1}
-.card-top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px}
-.source{font-size:.74rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--blue)}
-.age{font-size:.74rem;color:var(--muted)}
-.card h3{font-family:Georgia,"Times New Roman",serif;font-size:1.22rem;line-height:1.16;margin:0 0 9px}
-.card p{font-size:.9rem;color:#5c6872;margin:0 0 12px}
-details{border-top:1px solid var(--line);padding-top:10px;margin-top:auto}
-details summary{cursor:pointer;font-weight:800;font-size:.84rem;color:var(--navy)}
-details ul{padding-left:18px;color:#65717b;font-size:.82rem;margin-bottom:0}
-.card .read{margin-top:12px}
-.hidden{display:none!important}
-.empty{display:none;padding:40px 0;text-align:center;color:var(--muted)}
-.quiz{margin-top:42px;background:#f0ece3;border:1px solid var(--line);padding:26px}
-.quiz-head{max-width:820px}
-.quiz h2{font-family:Georgia,serif;font-size:2rem;margin:0 0 7px}
-.quiz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
-.q{background:var(--card);border:1px solid var(--line);padding:17px}
-.qnum{font-weight:900;color:var(--red);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em}
-.qtype{font-size:.78rem;color:var(--muted);margin:3px 0 9px}
-.q h3{font-family:Georgia,serif;font-size:1.06rem;line-height:1.35;margin:0 0 12px}
-textarea{width:100%;min-height:105px;border:1px solid var(--line);padding:10px;background:#fff;color:var(--ink);font:inherit;resize:vertical}
-.solutions{margin-top:16px;background:var(--card);border:1px solid var(--line);padding:18px}
-.solution{border-top:1px solid var(--line);padding:14px 0}
-.solution:first-child{border-top:0;padding-top:0}
-.solution h3{font-size:1rem;margin:0 0 6px}
-.solution p{font-size:.9rem;color:#5d6973;margin:0 0 7px}
-.solution a{font-weight:800;color:var(--blue)}
-.sources{margin-top:28px;background:var(--card);border:1px solid var(--line);padding:20px}
-.sources h2{font-family:Georgia,serif;margin:0 0 10px}
-.source-pills{display:flex;gap:8px;flex-wrap:wrap}
-.source-pills a{text-decoration:none;border:1px solid var(--line);padding:7px 10px;border-radius:999px;font-size:.82rem;background:white}
-.note{font-size:.82rem;color:var(--muted);margin-top:12px}
-footer{background:#081b2a;color:#bdcbd4;padding:24px 0;font-size:.82rem}
-footer strong{color:white}
-@media(max-width:900px){.feature{grid-template-columns:1fr}.feature-media{min-height:280px}.grid{grid-template-columns:repeat(2,1fr)}.edition-bar{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.brand-inner{align-items:flex-start;flex-direction:column}.grid,.quiz-grid{grid-template-columns:1fr}.feature-body{padding:20px}.edition-bar{grid-template-columns:1fr 1fr}}
-@media print{.nav,.read,textarea,footer{display:none!important}body{background:white}.card,.feature,.quiz,.sources{box-shadow:none;break-inside:avoid}}
-</style>
-</head>
-<body>
-<div class="topline">
-  <div class="wrap">
-    <span>Radar de Actualidad · Edición del 25 de septiembre de 2026</span>
-    <span>Proyecto y edición: <strong>Jhoel Aleman</strong></span>
-  </div>
-</div>
-
-<header class="brand">
-  <div class="wrap brand-inner">
-    <div>
-      <div class="kicker">PERIODISMO INFORMATIVO</div>
-      <h1>Radar de Actualidad</h1>
-    </div>
-    <div class="brand-copy">
-      Selección de <strong>alto impacto nacional</strong>, sin repetir el mismo acontecimiento entre medios.
-      Solo se conservan noticias de las <strong>últimas 48 horas</strong>.
-    </div>
-  </div>
-</header>
-
-<nav class="nav">
-  <div class="wrap">
-    <input id="search" class="search" type="search" placeholder="Buscar por tema, institución, cifra o medio…" aria-label="Buscar noticias">
-    <div id="filters"></div>
-  </div>
-</nav>
-
-<main class="wrap">
-  <section class="edition-bar">
-    <div class="stat"><b id="liveCount">14</b><span>noticias seleccionadas</span></div>
-    <div class="stat"><b>10</b><span>medios monitoreados</span></div>
-    <div class="stat"><b>48 h</b><span>ventana máxima</span></div>
-    <div class="stat"><b>5</b><span>preguntas de actualidad</span></div>
-  </section>
-
-  <section id="featured"></section>
-
-  <div class="section-head">
-    <div>
-      <h2>Panorama nacional</h2>
-      <div class="small">Prioridad: política pública, seguridad, economía, salud, educación, ambiente, migración y hechos de repercusión nacional.</div>
-    </div>
-    <div id="counter" class="small"></div>
-  </div>
-
-  <section id="newsGrid" class="grid"></section>
-  <div id="empty" class="empty">No hay noticias vigentes que coincidan con este filtro.</div>
-
-  <section class="quiz">
-    <div class="quiz-head">
-      <div class="category">Ejercicio diario</div>
-      <h2>Prueba de Actualidad</h2>
-      <p class="note">Cinco preguntas de análisis construidas a partir de las noticias de esta edición. Las respuestas y fuentes están ocultas hasta que abras el solucionario.</p>
-    </div>
-    <div id="quizGrid" class="quiz-grid"></div>
-    <details class="solutions">
-      <summary><strong>Finalizar prueba · ver respuestas correctas y fuentes</strong></summary>
-      <div id="solutions"></div>
-    </details>
-  </section>
-
-  <section class="sources">
-    <h2>Fuentes monitoreadas</h2>
-    <div class="source-pills"><a href="https://www.latribuna.hn/" target="_blank" rel="noopener noreferrer">La Tribuna</a><a href="https://tiempo.hn/" target="_blank" rel="noopener noreferrer">Diario Tiempo</a><a href="https://www.radiohrn.hn/" target="_blank" rel="noopener noreferrer">Radio HRN</a><a href="https://hch.tv/" target="_blank" rel="noopener noreferrer">HCH</a><a href="https://www.tunota.com/" target="_blank" rel="noopener noreferrer">TuNota</a><a href="https://proceso.hn/" target="_blank" rel="noopener noreferrer">Proceso Digital</a><a href="https://www.laprensa.hn/" target="_blank" rel="noopener noreferrer">La Prensa</a><a href="https://www.elheraldo.hn/" target="_blank" rel="noopener noreferrer">El Heraldo</a><a href="https://oncenoticias.hn/" target="_blank" rel="noopener noreferrer">Once Noticias</a><a href="https://www.diez.hn/" target="_blank" rel="noopener noreferrer">Diez</a></div>
-    <p class="note">La inclusión de un medio no implica respaldo editorial. El objetivo es ampliar cobertura, contrastar hechos y evitar que una sola agenda informativa domine la selección. La Tribuna puede presentar restricciones técnicas de acceso automatizado en algunas ediciones.</p>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <strong>Proyecto y edición: Jhoel Aleman.</strong> Desarrollo asistido por inteligencia artificial:
-    <strong>ChatGPT de OpenAI, modelo GPT-5.6 Sol.</strong>
-    Los resúmenes son material de estudio; para el contexto completo consulta siempre la fuente original.
-  </div>
-</footer>
-
+:root{--ink:#102536;--navy:#0b263b;--paper:#f4f1e9;--card:#fffdf8;--line:#d9d1c3;--muted:#687581;--red:#92283a;--gold:#c2a15b;--blue:#236991;--shadow:0 14px 34px rgba(16,38,55,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}a{color:inherit}
+.wrap{width:min(1200px,calc(100% - 28px));margin:auto}.top{background:#071a29;color:#d9e3e9;font-size:.78rem}.top .wrap{display:flex;justify-content:space-between;gap:15px;padding:8px 0;flex-wrap:wrap}
+.hero{background:linear-gradient(130deg,#0a263b,#10344d);color:white;border-bottom:4px solid var(--gold)}.hero-inner{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:end;padding:34px 0 28px}
+.kicker{color:#ddc681;font-weight:900;letter-spacing:.16em;font-size:.76rem}h1{font:700 clamp(3rem,7vw,6.5rem)/.9 Georgia,serif;letter-spacing:-.05em;margin:10px 0 0}.hero-copy{color:#dbe6ed;max-width:430px}
+.nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}.nav .wrap{display:flex;gap:9px;align-items:center;padding:10px 0;flex-wrap:wrap}
+.search{flex:1 1 260px;padding:11px 12px;border:1px solid var(--line);border-radius:9px;font:inherit}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;font:inherit;font-size:.84rem;cursor:pointer}.filter.active{background:var(--navy);color:white;border-color:var(--navy)}
+main{padding:28px 0 60px}.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--line);gap:1px;margin-bottom:25px}.stat{background:var(--card);padding:14px}.stat b{display:block;font:700 1.35rem Georgia,serif}.stat span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.feature{display:grid;grid-template-columns:1.3fr .7fr;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);margin-bottom:31px}.feature-media{min-height:400px;background:#dfe4e7;overflow:hidden}.feature-media img{width:100%;height:100%;object-fit:cover;display:block}.feature-body{padding:29px;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{color:var(--red);font-weight:900;font-size:.74rem;text-transform:uppercase;letter-spacing:.12em}.feature h2{font:700 clamp(1.9rem,3.5vw,3.15rem)/1.03 Georgia,serif;letter-spacing:-.02em;margin:9px 0 13px}.feature p{color:#566671}.meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:.78rem}
+.btn{display:inline-flex;width:max-content;margin-top:15px;background:var(--navy);color:white;text-decoration:none;border-radius:7px;padding:10px 13px;font-weight:800;font-size:.84rem}
+.section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;border-bottom:2px solid var(--navy);padding-bottom:8px;margin:30px 0 16px}.section-head h2{font:700 1.85rem Georgia,serif;margin:0}.small{font-size:.8rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;box-shadow:0 5px 18px rgba(16,35,50,.05)}.thumb{aspect-ratio:16/9;background:#dce2e5;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;display:block}.card-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.card-top{display:flex;justify-content:space-between;gap:8px;margin-bottom:8px}.source{font-size:.72rem;color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:.07em}.date{font-size:.72rem;color:var(--muted);white-space:nowrap}.card h3{font:700 1.22rem/1.17 Georgia,serif;margin:0 0 9px}.card p{font-size:.89rem;color:#5c6973;margin:0 0 12px}
+.study{border-top:1px solid var(--line);padding-top:10px;margin-top:auto}details summary{cursor:pointer;font-size:.83rem;font-weight:800}details ul{font-size:.8rem;color:var(--muted);padding-left:18px}
+.quiz{margin-top:42px;background:#ede8de;border:1px solid var(--line);padding:25px}.quiz h2{font:700 2rem Georgia,serif;margin:4px 0 6px}.quiz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}.q{background:var(--card);border:1px solid var(--line);padding:17px}.qnum{font-size:.74rem;color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:.1em}.qtype{font-size:.76rem;color:var(--muted);margin:3px 0 8px}.q h3{font:700 1.05rem/1.35 Georgia,serif}textarea{width:100%;min-height:100px;border:1px solid var(--line);background:white;padding:10px;font:inherit}
+.solutions{margin-top:15px;background:var(--card);border:1px solid var(--line);padding:18px}.solution{padding:13px 0;border-top:1px solid var(--line)}.solution:first-child{border-top:0}.solution h3{margin:0 0 6px;font-size:1rem}.solution p{font-size:.88rem;color:#5c6973}.solution a{font-weight:800;color:var(--blue)}
+.sources{margin-top:28px;background:var(--card);border:1px solid var(--line);padding:20px}.sources h2{font:700 1.4rem Georgia,serif;margin:0 0 10px}.pills{display:flex;gap:8px;flex-wrap:wrap}.pills a{text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 10px;font-size:.81rem;background:#fff}.note{font-size:.8rem;color:var(--muted)}footer{background:#071a29;color:#c0ccd4;padding:24px 0;font-size:.8rem}footer strong{color:white}.empty{display:none;text-align:center;padding:36px;color:var(--muted)}
+@media(max-width:900px){.hero-inner,.feature{grid-template-columns:1fr}.feature-media{min-height:280px}.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.grid,.quiz-grid{grid-template-columns:1fr}h1{font-size:3.7rem}}
+</style></head><body>
+<div class="top"><div class="wrap"><span>Radar de Actualidad · Edición del 26 de septiembre de 2026</span><span>Proyecto y edición: <strong>Jhoel Aleman</strong></span></div></div>
+<header class="hero"><div class="wrap hero-inner"><div><div class="kicker">PERIODISMO INFORMATIVO</div><h1>Radar de<br>Actualidad</h1></div><div class="hero-copy">Selección de <b>alto impacto nacional</b> con noticias publicadas <b>ayer y hoy</b>. Un mismo acontecimiento aparece una sola vez.</div></div></header>
+<nav class="nav"><div class="wrap"><input id="search" class="search" placeholder="Buscar por tema, persona, cifra, institución o medio…"><div id="filters"></div></div></nav>
+<main class="wrap"><section class="stats"><div class="stat"><b>16</b><span>noticias seleccionadas</span></div><div class="stat"><b>10</b><span>medios monitoreados</span></div><div class="stat"><b>25–26 SEP</b><span>ventana de esta edición</span></div><div class="stat"><b>5</b><span>preguntas de actualidad</span></div></section>
+<section id="featured"></section><div class="section-head"><div><h2>Panorama informativo</h2><div class="small">Economía, seguridad, política, salud, ambiente, derechos humanos, internacional y deportes.</div></div><div id="counter" class="small"></div></div><section id="grid" class="grid"></section><div id="empty" class="empty">No hay noticias que coincidan con la búsqueda.</div>
+<section class="quiz"><div class="eyebrow">Ejercicio diario</div><h2>Prueba de Actualidad</h2><p class="note">Responde primero. El solucionario permanece oculto hasta que lo abras.</p><div id="quizGrid" class="quiz-grid"></div><details class="solutions"><summary><strong>Finalizar prueba · ver respuestas correctas y fuentes</strong></summary><div id="solutions"></div></details></section>
+<section class="sources"><h2>Fuentes monitoreadas</h2><div class="pills"><a href="https://www.latribuna.hn/" target="_blank" rel="noopener noreferrer">Diario La Tribuna</a><a href="https://tiempo.hn/" target="_blank" rel="noopener noreferrer">Diario Tiempo</a><a href="https://www.radiohrn.hn/" target="_blank" rel="noopener noreferrer">Radio HRN</a><a href="https://hch.tv/" target="_blank" rel="noopener noreferrer">HCH</a><a href="https://www.tunota.com/" target="_blank" rel="noopener noreferrer">TuNota</a><a href="https://proceso.hn/" target="_blank" rel="noopener noreferrer">Proceso Digital</a><a href="https://www.laprensa.hn/" target="_blank" rel="noopener noreferrer">La Prensa</a><a href="https://www.elheraldo.hn/" target="_blank" rel="noopener noreferrer">El Heraldo</a><a href="https://oncenoticias.hn/" target="_blank" rel="noopener noreferrer">Once Noticias</a><a href="https://www.diez.hn/" target="_blank" rel="noopener noreferrer">Diez</a></div><p class="note">Se priorizan hechos de alto impacto y se evita repetir el mismo acontecimiento. La Tribuna continúa monitoreada, aunque su sitio puede restringir algunas consultas automatizadas.</p></section></main>
+<footer><div class="wrap"><strong>Proyecto y edición: Jhoel Aleman.</strong> Desarrollo asistido por inteligencia artificial: <strong>ChatGPT de OpenAI, modelo GPT-5.6 Sol.</strong></div></footer>
 <script>
-const ARTICLES = [{"title": "Expertos proyectan que la inflación de Honduras superará 6% al cierre de 2026", "url": "https://www.elheraldo.hn/economia/expertos-proyectan-inflacion-de-honduras-superara-6-al-cierre-de-2026-AF32152165", "source": "El Heraldo", "publishedAt": "2026-09-25T09:01:00-06:00", "dateLabel": "25 sep · 9:01 a. m.", "category": "Economía", "summary": "El Heraldo recoge proyecciones de economistas que sitúan la inflación de cierre por encima de 6%. El BCH reportaba a agosto 6.20% interanual y había elevado la Tasa de Política Monetaria a 6%.", "keys": ["Inflación interanual a agosto: 6.20%", "TPM: 6%", "La proyección de cierre es una estimación, no un dato definitivo"], "image": "https://www.elheraldo.hn/binrepository/1259x945/0c0/0d0/none/45933/WICS/huevos1_15694087_20260925091443.jpg", "featured": true}, {"title": "Ministerio Público pide más fiscales y presupuesto para fortalecer la persecución penal", "url": "https://www.laprensa.hn/honduras/ministerio-publico-pide-fiscales-presupuesto-persecucion-penal-MF32151850", "source": "La Prensa", "publishedAt": "2026-09-25T08:36:00-06:00", "dateLabel": "25 sep · 8:36 a. m.", "category": "Seguridad y justicia", "summary": "El fiscal general Pablo Emilio Reyes afirmó que el Ministerio Público cuenta con unos 796 fiscales y planteó elevar la capacidad institucional, además de aumentar los recursos presupuestarios.", "keys": ["MP: unos 796 fiscales actualmente", "El fiscal general plantea ampliar capacidad y recursos", "La petición presupuestaria no equivale a una asignación ya aprobada"], "image": "https://www.laprensa.hn/binrepository/1260x945/0c0/0d0/none/11004/GHGR/plantilla-de-medida-de-fotos-la-pren_15693823_20260925084700.jpg"}, {"title": "Diputados conocen ley especial para combatir el narcotráfico de drogas sintéticas", "url": "https://proceso.hn/diputados-conocen-ley-especial-para-combatir-el-narcotrafico-de-drogas-sinteticas/", "source": "Proceso Digital", "publishedAt": "2026-09-25T09:00:00-06:00", "dateLabel": "25 sep", "category": "Seguridad y justicia", "summary": "El Congreso conoce una iniciativa de Ley Especial de Precursores Químicos y Sanción de Narcotráfico Sintético. El proyecto fue remitido a comisiones para su análisis.", "keys": ["Tema: precursores químicos y drogas sintéticas", "El proyecto fue remitido a comisiones", "Es una propuesta legislativa, no una ley vigente todavía"], "image": "https://proceso.hn/wp-content/uploads/2026/09/Marlon-Lara-696x461.jpg"}, {"title": "EE. UU. destaca la decisión de Honduras de declarar terroristas a grupos criminales", "url": "https://www.radiohrn.hn/estados-unidos-destaca-decision-de-honduras-de-declarar-terroristas-a-grupos-criminales-2026-09-25", "source": "Radio HRN", "publishedAt": "2026-09-25T12:57:00-06:00", "dateLabel": "25 sep · 12:57 p. m.", "category": "Seguridad y justicia", "summary": "HRN informó que Estados Unidos expresó respaldo a la decisión hondureña de designar como terroristas a tres estructuras criminales. La nota se enmarca en el nuevo enfoque de seguridad del país.", "keys": ["Tema: designación de estructuras criminales", "Reacción diplomática de Estados Unidos", "Distinguir la decisión hondureña de la valoración estadounidense"], "image": "https://www.radiohrn.hn/wp-content/uploads/2026/09/principal_eeuu_celebra_honduras_terroristas.jpg"}, {"title": "Analizan reforma para destinar dinero incautado a seguridad y justicia", "url": "https://www.laprensa.hn/honduras/san-pedro-sula-tomas-zambrano-plantea-usar-dinero-incautado-fortalecer-seguridad-KF32152668", "source": "La Prensa", "publishedAt": "2026-09-25T09:27:00-06:00", "dateLabel": "25 sep · 9:27 a. m.", "category": "Política y gobierno", "summary": "El presidente del Congreso, Tomás Zambrano, dijo que se analiza una reforma para permitir el uso temporal de recursos incautados al crimen organizado mientras continúan procesos judiciales.", "keys": ["La propuesta está en análisis", "Fondos mencionados: entre L800 y L1,000 millones según Zambrano", "El mecanismo tendría que contemplar restitución si una sentencia ordena devolver los bienes"], "image": "https://www.laprensa.hn/binrepository/1260x945/0c0/0d0/none/11004/UHGR/plantilla-de-medida-de-fotos-la-pren_15694337_20260925094949.jpg"}, {"title": "Apagones de hasta ocho horas golpean a comercios y MIPYMES", "url": "https://oncenoticias.hn/nacionales/apagones-honduras-perdidas-10-millones-diarios-mipymes/", "source": "Once Noticias", "publishedAt": "2026-09-25T10:30:00-06:00", "dateLabel": "25 sep", "category": "Economía", "summary": "Once Noticias recoge reportes de sectores productivos que estiman pérdidas de hasta L10 millones diarios cuando se producen racionamientos prolongados, especialmente en la zona norte.", "keys": ["Cifra reportada por sectores consultados: hasta L10 millones diarios", "Cortes mencionados: hasta ocho horas", "La cifra es una estimación gremial, no un cálculo oficial auditado"], "image": null}, {"title": "Paro médico profundiza dificultades en centros públicos de salud", "url": "https://oncenoticias.hn/nacionales/paro-medico-agrava-la-crisis-sanitaria-y-golpea-a-los-sectores-mas-pobres-de-honduras/", "source": "Once Noticias", "publishedAt": "2026-09-25T10:15:00-06:00", "dateLabel": "25 sep", "category": "Salud", "summary": "La cobertura describe reducción de atenciones y mayores tiempos de espera en centros de salud de la zona norte durante el paro médico, además de testimonios sobre costos adicionales para pacientes.", "keys": ["Impacto reportado: menos atención y más espera", "Zona destacada: norte de Honduras", "Conviene separar testimonios de pacientes de datos oficiales del sistema"], "image": null}, {"title": "Honduras proyecta exportar más de 100 contenedores de camarón a China", "url": "https://hch.tv/honduras-proyecta-exportar-mas-de-100-contenedores-de-camaron-a-china-en-2026/", "source": "HCH", "publishedAt": "2026-09-25T08:15:00-06:00", "dateLabel": "25 sep", "category": "Economía", "summary": "HCH reporta el lanzamiento de un programa de exportación de camarón a China. La primera etapa contempla 1.2 millones de kilogramos y el objetivo es superar 100 contenedores antes de finalizar 2026.", "keys": ["Primera exportación: 1.2 millones de kg", "Meta: más de 100 contenedores", "Destino: mercado chino"], "image": "https://hch.tv/wp-content/uploads/2026/09/Honduras-proyecta-exportar-mas-de-100-contenedores-de-camaron-a-China-en-2026.jpg"}, {"title": "Fenagh advierte dificultades para la cosecha de postrera por falta de crédito y seguro", "url": "https://proceso.hn/cosecha-de-postrera-esta-en-el-aire-no-hay-credito-ni-seguro-para-el-productor-fenagh/", "source": "Proceso Digital", "publishedAt": "2026-09-25T08:45:00-06:00", "dateLabel": "25 sep", "category": "Economía", "summary": "La Fenagh advirtió que productores enfrentan falta de crédito, seguro agrícola y altos costos en el inicio de la siembra de postrera, además del impacto acumulado de la sequía.", "keys": ["Sector: agricultura y ganadería", "Problemas señalados: crédito, seguro y costos", "Riesgo señalado por el gremio: menor producción y presión sobre seguridad alimentaria"], "image": "https://proceso.hn/wp-content/uploads/2026/02/Jose-Chacon-696x387.jpg"}, {"title": "España prevé 2,000 plazas temporales para trabajadores hondureños en 2027", "url": "https://www.tunota.com/honduras-hoy/hondurenos-trabajen-legalmente-espana-plazas-requisitos-2026-09-24", "source": "TuNota", "publishedAt": "2026-09-24T19:57:00-06:00", "dateLabel": "24 sep · 7:57 p. m.", "category": "Empleo y migración", "summary": "España prevé incorporar a unos 2,000 trabajadores hondureños mediante el programa GECCO. La contratación se realiza en origen y contempla trabajo temporal, principalmente agrícola, con retorno al país.", "keys": ["Plazas previstas: 2,000", "Programa: GECCO", "Modelo: migración laboral regular y temporal"], "image": "https://www.tunota.com/wp-content/uploads/2026/09/principal_hondurenos_trabajo_espana.webp"}, {"title": "Honduras será sede de la Cumbre Iberoamericana de 2028", "url": "https://www.tunota.com/mundo/honduras-sera-sede-cumbre-iberoamericana-2028-tras-voto-unanime-2026-09-24", "source": "TuNota", "publishedAt": "2026-09-24T13:03:00-06:00", "dateLabel": "24 sep · 1:03 p. m.", "category": "Internacional", "summary": "Honduras fue seleccionada como sede de la Cumbre Iberoamericana de Jefes de Estado y de Gobierno de 2028, después de la cumbre prevista para 2026 en Madrid.", "keys": ["Evento: Cumbre Iberoamericana", "Sede hondureña: 2028", "Comunidad Iberoamericana: 22 países"], "image": "https://www.tunota.com/wp-content/uploads/2026/09/principal_cumbre_iberoamericana_honduras_sede.webp"}, {"title": "Debate educativo: propuesta de Plan de Lectura de Biblia y Valores en escuelas públicas", "url": "https://www.radiohrn.hn/mario-banegas-plan-lectura-biblia-y-valores-escuelas-honduras-2026-09-25", "source": "Radio HRN", "publishedAt": "2026-09-25T11:50:00-06:00", "dateLabel": "25 sep · 11:50 a. m.", "category": "Educación", "summary": "HRN explica una iniciativa legislativa para impulsar un Plan Nacional de Lectura de Biblia y Valores. La propia nota recuerda que el artículo 151 de la Constitución establece el carácter laico de la educación nacional.", "keys": ["Es una iniciativa en proceso de socialización", "Constitución, art. 151: educación nacional laica", "El diputado proponente ha planteado una opción de exclusión para familias que no estén de acuerdo"], "image": "https://www.radiohrn.hn/wp-content/uploads/2026/09/principal_biblia_honduras_educacion-.jpg"}, {"title": "Occidente y sur tendrán lluvias dispersas; la mayor parte del país seguirá cálida", "url": "https://www.elheraldo.hn/honduras/habra-lluvias-condiciones-clima-viernes-25-septiembre-honduras-copeco-CE32149685", "source": "El Heraldo", "publishedAt": "2026-09-24T18:23:00-06:00", "dateLabel": "24 sep · 6:23 p. m.", "category": "Ambiente y clima", "summary": "El pronóstico citado por El Heraldo prevé condiciones secas y cálidas en gran parte del país, con lluvias y chubascos dispersos en sectores del occidente y sur durante la tarde.", "keys": ["Occidente y sur: lluvias dispersas", "Resto del país: predominio seco y cálido", "Pronóstico: puede cambiar con nuevas actualizaciones de Copeco/Cenaos"], "image": "https://www.elheraldo.hn/binrepository/1260x945/0c0/0d0/none/45933/SEHM/el-heraldo_15691338_20260924183306.jpg"}, {"title": "Honduras debuta ante Surinam en la Liga de Naciones de Concacaf", "url": "https://www.diez.hn/internacionales/partidos-de-hoy-en-la-liga-de-naciones-uefa-concacaf-debuta-honduras-francia-italia-mbappe-zidane-resultados-IF32151292", "source": "Diez", "publishedAt": "2026-09-25T06:18:00-06:00", "dateLabel": "25 sep · 6:18 a. m.", "category": "Deportes", "summary": "La selección de Honduras inicia su participación en la nueva edición de la Liga de Naciones de Concacaf con un partido ante Surinam en Tegucigalpa.", "keys": ["Competencia: Liga de Naciones de Concacaf", "Rival: Surinam", "Sede: Estadio Nacional de Tegucigalpa"], "image": "https://www.diez.hn/binrepository/900x675/0c0/0d0/none/3014757/TJRS/nations-league-1_15693135_20260925062224.jpg"}];
-const QUIZ = [{"n": 1, "type": "Economía · El Heraldo", "q": "La inflación interanual a agosto fue de 6.20%, pero varios economistas proyectan un cierre anual superior a 6%. ¿Qué diferencia debe explicar un periodista entre ambos datos para no confundir al público?", "a": "La inflación interanual observada es un dato ya medido para un período concreto; la cifra de cierre es una proyección. Deben presentarse por separado, con su fecha, fuente y grado de certeza.", "url": "https://www.elheraldo.hn/economia/expertos-proyectan-inflacion-de-honduras-superara-6-al-cierre-de-2026-AF32152165", "source": "El Heraldo"}, {"n": 2, "type": "Seguridad y justicia · La Prensa", "q": "El Ministerio Público plantea que necesita más fiscales y recursos. ¿Por qué este dato es relevante al analizar nuevas leyes de seguridad, y qué no puede concluirse solo con aumentar presupuesto o personal?", "a": "Porque la capacidad institucional condiciona la investigación y persecución penal. Sin embargo, más presupuesto o fiscales no garantizan por sí solos mejores resultados: también importan gestión, coordinación, controles, carga de casos y evaluación de resultados.", "url": "https://www.laprensa.hn/honduras/ministerio-publico-pide-fiscales-presupuesto-persecucion-penal-MF32151850", "source": "La Prensa"}, {"n": 3, "type": "Salud · Once Noticias", "q": "En una cobertura sobre un paro médico, ¿qué fuentes adicionales deberían buscarse para comprobar el alcance real del impacto más allá de testimonios de pacientes?", "a": "Autoridades de Salud y hospitales, representantes del Colegio Médico o del gremio, datos de consultas suspendidas, emergencias atendidas, abastecimiento de medicamentos y cifras comparables de días normales.", "url": "https://oncenoticias.hn/nacionales/paro-medico-agrava-la-crisis-sanitaria-y-golpea-a-los-sectores-mas-pobres-de-honduras/", "source": "Once Noticias"}, {"n": 4, "type": "Educación · Radio HRN", "q": "La propuesta de lectura de Biblia y Valores se presenta en un sistema educativo constitucionalmente laico. ¿Qué elementos debería contrastar una cobertura periodística para informar el debate sin convertirlo en opinión?", "a": "El texto exacto de la iniciativa, el artículo 151 constitucional, la forma de implementación, el carácter voluntario u obligatorio, la posición de Educación, docentes y familias, y argumentos jurídicos de distintas partes.", "url": "https://www.radiohrn.hn/mario-banegas-plan-lectura-biblia-y-valores-escuelas-honduras-2026-09-25", "source": "Radio HRN"}, {"n": 5, "type": "Empleo y migración · TuNota", "q": "¿Por qué las 2,000 plazas previstas en España deben explicarse como migración laboral temporal y no como 2,000 empleos permanentes garantizados?", "a": "Porque se trata de una previsión dentro del programa GECCO: la contratación es en origen, depende de selección y requisitos, se realiza por temporada y contempla el retorno del trabajador a Honduras.", "url": "https://www.tunota.com/honduras-hoy/hondurenos-trabajen-legalmente-espana-plazas-requisitos-2026-09-24", "source": "TuNota"}];
-const MAX_AGE = 48 * 60 * 60 * 1000;
-let activeCategory = "Todas";
-
-const grid = document.getElementById("newsGrid");
-const featured = document.getElementById("featured");
-const filters = document.getElementById("filters");
-const search = document.getElementById("search");
-const counter = document.getElementById("counter");
-const empty = document.getElementById("empty");
-
-const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
-
-function isFresh(a) {
-  const t = new Date(a.publishedAt).getTime();
-  const diff = Date.now() - t;
-  return Number.isFinite(t) && diff <= MAX_AGE && diff >= -6*60*60*1000;
-}
-function ageLabel(dt) {
-  const h = Math.max(0,(Date.now()-new Date(dt).getTime())/3600000);
-  if (h < 1) return "hace menos de 1 h";
-  if (h < 24) return "hace " + Math.floor(h) + " h";
-  return "hace " + Math.floor(h/24) + " día";
-}
-function fallbackSvg(cat) {
-  const safe = esc(cat);
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675">
-  <rect width="1200" height="675" fill="#0c2438"/>
-  <rect x="0" y="0" width="1200" height="12" fill="#b89452"/>
-  <text x="68" y="285" fill="#fff" font-size="50" font-family="Georgia" font-weight="700">Radar de Actualidad</text>
-  <text x="68" y="350" fill="#d6c191" font-size="28" font-family="Arial">${safe}</text>
-  <text x="68" y="405" fill="#b8c8d2" font-size="22" font-family="Arial">Vista previa no disponible</text>
-  </svg>`;
-  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
-}
-async function tryPreview(img) {
-  if (img.dataset.fallbackTried === "1") {
-    img.src = fallbackSvg(img.dataset.category || "Actualidad");
-    return;
-  }
-  img.dataset.fallbackTried = "1";
-  const articleUrl = img.dataset.article;
-  const cacheKey = "radar-img:"+articleUrl;
-  try {
-    const cached = localStorage.getItem(cacheKey);
-    if (cached) { img.src = cached; return; }
-    const r = await fetch("https://api.microlink.io/?url="+encodeURIComponent(articleUrl)+"&filter=image.url");
-    if (!r.ok) throw new Error("preview");
-    const j = await r.json();
-    const u = j && j.data && j.data.image && j.data.image.url;
-    if (!u) throw new Error("no image");
-    localStorage.setItem(cacheKey,u);
-    img.src = u;
-  } catch(e) {
-    img.src = fallbackSvg(img.dataset.category || "Actualidad");
-  }
-}
-function imgTag(a, cls="") {
-  const src = a.image || fallbackSvg(a.category);
-  return `<img class="${cls}" src="${esc(src)}" loading="lazy" referrerpolicy="no-referrer"
-    data-article="${esc(a.url)}" data-category="${esc(a.category)}"
-    alt="Vista previa de ${esc(a.title)}" onerror="tryPreview(this)">`;
-}
-function freshArticles() { return ARTICLES.filter(isFresh); }
-
-function drawFeatured(all) {
-  const f = all.find(a => a.featured) || all[0];
-  if (!f) { featured.innerHTML=""; return; }
-  featured.innerHTML = `<article class="feature">
-    <div class="feature-media">${imgTag(f)}</div>
-    <div class="feature-body">
-      <div class="category">${esc(f.category)} · noticia destacada</div>
-      <h2>${esc(f.title)}</h2>
-      <p>${esc(f.summary)}</p>
-      <div class="meta"><span>${esc(f.source)}</span><span>•</span><span>${esc(f.dateLabel)}</span><span>•</span><span>${ageLabel(f.publishedAt)}</span></div>
-      <a class="read" href="${esc(f.url)}" target="_blank" rel="noopener noreferrer">Leer fuente original ↗</a>
-    </div>
-  </article>`;
-}
-function drawFilters(all) {
-  const cats = ["Todas", ...new Set(all.map(a => a.category))];
-  filters.innerHTML = cats.map(c => `<button class="filter ${c===activeCategory?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
-  filters.querySelectorAll("button").forEach(b => b.onclick = () => {
-    activeCategory = b.dataset.cat;
-    drawFilters(freshArticles());
-    drawCards();
-  });
-}
-function drawCards() {
-  const all = freshArticles();
-  const q = search.value.trim().toLowerCase();
-  const shown = all.filter(a => {
-    const cat = activeCategory==="Todas" || a.category===activeCategory;
-    const hay = [a.title,a.summary,a.source,a.category,...a.keys].join(" ").toLowerCase();
-    return cat && (!q || hay.includes(q));
-  });
-  grid.innerHTML = shown.map(a => `<article class="card">
-    <div class="thumb">${imgTag(a)}</div>
-    <div class="card-body">
-      <div class="card-top"><span class="source">${esc(a.source)} · ${esc(a.category)}</span><span class="age">${ageLabel(a.publishedAt)}</span></div>
-      <h3>${esc(a.title)}</h3>
-      <p>${esc(a.summary)}</p>
-      <details><summary>Claves para estudiar</summary><ul>${a.keys.map(k=>`<li>${esc(k)}</li>`).join("")}</ul></details>
-      <a class="read" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">Fuente original ↗</a>
-    </div>
-  </article>`).join("");
-  counter.textContent = `${shown.length} visibles · ${all.length} vigentes`;
-  document.getElementById("liveCount").textContent = all.length;
-  empty.style.display = shown.length ? "none" : "block";
-}
-function drawQuiz() {
-  const qg = document.getElementById("quizGrid");
-  const sol = document.getElementById("solutions");
-  qg.innerHTML = QUIZ.map(q => `<article class="q">
-    <div class="qnum">Pregunta ${q.n}</div>
-    <div class="qtype">${esc(q.type)}</div>
-    <h3>${esc(q.q)}</h3>
-    <textarea placeholder="Escribe tu respuesta antes de abrir el solucionario…"></textarea>
-  </article>`).join("");
-  sol.innerHTML = QUIZ.map(q => `<div class="solution">
-    <h3>${q.n}. ${esc(q.type)}</h3>
-    <p><strong>Respuesta esperada:</strong> ${esc(q.a)}</p>
-    <a href="${esc(q.url)}" target="_blank" rel="noopener noreferrer">Abrir fuente — ${esc(q.source)} ↗</a>
-  </div>`).join("");
-}
-
-search.addEventListener("input", drawCards);
-const initial = freshArticles();
-drawFeatured(initial);
-drawFilters(initial);
-drawCards();
-drawQuiz();
-setInterval(() => {
-  const all = freshArticles();
-  drawFeatured(all);
-  drawFilters(all);
-  drawCards();
-}, 300000);
-</script>
-</body>
-</html>
+const ARTICLES=[{"title": "Honduras registra 211 muertes violentas de mujeres en lo que va de 2026", "url": "https://proceso.hn/honduras-registra-211-muertes-de-mujeres-en-este-2026/", "source": "Proceso Digital", "date": "26 sep · hoy", "category": "Seguridad y justicia", "summary": "Organizaciones de mujeres reportan 211 muertes violentas de mujeres en 2026. Francisco Morazán concentra 45 casos, seguido por Cortés con 32 y Yoro con 24.", "keys": ["Total reportado: 211 muertes violentas de mujeres", "Francisco Morazán: 45 casos", "La cifra proviene de organizaciones de mujeres citadas por el medio"], "image": "https://proceso.hn/wp-content/uploads/2021/08/muerte-de-mujeres-1-696x457.jpg", "featured": true}, {"title": "Lluvias vuelven a exponer problemas estructurales en el Hospital Escuela", "url": "https://oncenoticias.hn/nacionales/fuertes-lluvias-afectan-area-de-emergencia-exponen-vulnerabilidad-estructural-hospital-escuela-tegucigalpa/", "source": "Once Noticias", "date": "26 sep · hoy", "category": "Salud", "summary": "Filtraciones por las lluvias provocaron desprendimientos de cielo falso y caída de materiales cerca del área de emergencia del Hospital Escuela.", "keys": ["Centro: Hospital Escuela", "Área afectada: emergencia", "Autoridades activaron una alerta interna tras la filtración"], "image": null}, {"title": "Agente policial admite participación en el caso por la muerte de Waldina Mejía", "url": "https://oncenoticias.hn/nacionales/agente-policial-emilia-rodriguez-muerte-marina-waldina-mejia-proceso-abreviado-que-significa/", "source": "Once Noticias", "date": "26 sep · hoy", "category": "Seguridad y justicia", "summary": "La defensa de la agente Emilia Rodríguez solicitó un procedimiento abreviado por el homicidio de la infante de marina Waldina Mejía. La petición aún debe ser autorizada y resuelta judicialmente.", "keys": ["La imputada busca un procedimiento abreviado", "El procedimiento no fija automáticamente la pena", "Próxima audiencia: 12 de noviembre de 2026"], "image": null}, {"title": "JOH pide que se suspenda la alerta migratoria que le impide salir de Honduras", "url": "https://hch.tv/joh-pide-que-se-le-suspenda-la-alerta-migratoria-que-le-impide-salir-de-honduras/", "source": "HCH", "date": "26 sep · hoy", "category": "Política y gobierno", "summary": "La defensa del expresidente Juan Orlando Hernández solicitó la suspensión de la alerta migratoria que restringe su salida del país.", "keys": ["Actor: Juan Orlando Hernández", "Solicitud: suspensión de alerta migratoria", "Es una petición de la defensa, no una decisión judicial definitiva"], "image": null}, {"title": "Ministerio Público ejecuta Operación Vértice contra estructura 'Los Coyotillos'", "url": "https://hch.tv/mp-a-la-caza-de-los-coyotillos-en-marcha-cinco-allanamientos-por-asesinatos-drogas-y-armas/", "source": "HCH", "date": "26 sep · hoy", "category": "Seguridad y justicia", "summary": "El Ministerio Público puso en marcha cinco allanamientos contra una estructura identificada como 'Los Coyotillos', dentro de investigaciones relacionadas con homicidios, drogas y armas.", "keys": ["Operación: Vértice", "Acción: cinco allanamientos", "Instituciones mencionadas: UFE y ATIC"], "image": null}, {"title": "Honduras busca exportar más de 100 contenedores de camarón a China en 2026", "url": "https://www.tunota.com/economia/honduras-busca-ampliar-exportacion-de-camaron-a-china-con-nuevo-programa-2026-09-26", "source": "TuNota", "date": "26 sep · hoy", "category": "Economía", "summary": "Un nuevo programa de exportación plantea superar los 100 contenedores de camarón hacia China durante 2026, con ingresos proyectados superiores a L350 millones.", "keys": ["Meta: más de 100 contenedores", "Destino: China", "Ingresos proyectados: más de L350 millones"], "image": null}, {"title": "Cenaos prevé mañana seca y lluvias fuertes por la tarde en occidente y sur", "url": "https://tiempo.hn/honduras/2026/09/26/clima-sabado-26-septiembre-2026-pronostico-cenaos/", "source": "Diario Tiempo", "date": "26 sep · hoy", "category": "Ambiente y clima", "summary": "Cenaos prevé condiciones secas y calurosas durante la mañana, con lluvias y tormentas eléctricas por la tarde principalmente en el occidente y sur del país.", "keys": ["Fuente técnica: Cenaos", "Mayor probabilidad de lluvias: occidente y sur", "Riesgo principal: tormentas eléctricas vespertinas"], "image": null}, {"title": "Subinspector policial y acompañante mueren en ataque armado en Lempira", "url": "https://www.radiohrn.hn/policia-subinspector-dpi-jose-armando-pinto-lempira-2026-09-26", "source": "Radio HRN", "date": "26 sep · hoy", "category": "Seguridad y justicia", "summary": "La Policía Nacional confirmó la muerte de un subinspector y su acompañante en Lempira. El hecho se suma a la discusión nacional sobre violencia y seguridad.", "keys": ["Víctima institucional: subinspector policial", "Departamento: Lempira", "El caso requiere seguimiento a la investigación oficial"], "image": null}, {"title": "Corte confirma comiso de más de USD 4.2 millones en caso de hospitales móviles", "url": "https://www.laprensa.hn/honduras/corte-confirma-sentencia-ordena-recuperar-4-millones-caso-hospitales-moviles-EF32158941", "source": "La Prensa", "date": "25 sep · 3:00 p. m.", "category": "Seguridad y justicia", "summary": "La Corte de Apelaciones confirmó el comiso de USD 4,231,667.32 vinculado al caso de hospitales móviles y ordenó gestionar la recuperación de fondos ubicados en Estados Unidos.", "keys": ["Monto confirmado: USD 4,231,667.32", "Caso: hospitales móviles", "La recuperación internacional procede cuando la sentencia quede firme"], "image": "https://www.laprensa.hn/binrepository/1260x945/0c0/0d0/none/11004/SFGB/hm-covid_15697426_20260925152108.jpg"}, {"title": "Conadeh pide aprobar ley para búsqueda y protección de personas desaparecidas", "url": "https://proceso.hn/honduras-debe-cumplir-recomendaciones-de-proteccion-de-derechos-de-personas-desaparecidas-y-sus-familiares-alerta-conadeh/", "source": "Proceso Digital", "date": "25 sep", "category": "Derechos humanos", "summary": "Conadeh pidió convertir recomendaciones internacionales en medidas concretas y destacó la necesidad de que el Congreso apruebe la Ley de Búsqueda y Protección Jurídica de Personas Desaparecidas y sus Familias.", "keys": ["Institución: Conadeh", "Tema: personas desaparecidas y sus familias", "Petición central: aprobar un marco legal específico"], "image": "https://proceso.hn/wp-content/uploads/2025/09/Donde-estan-PD-696x538.jpg"}, {"title": "TPM en 6% podría encarecer créditos y enfriar el consumo", "url": "https://proceso.hn/subida-de-la-tpm-no-reducira-la-inflacion-pero-si-dilatara-el-proceso-senala-experta-de-la-unah/", "source": "Proceso Digital", "date": "25 sep", "category": "Economía", "summary": "El BCH elevó la Tasa de Política Monetaria a 6%. Una experta explicó que la medida busca contener presiones inflacionarias y podría trasladarse a tasas de interés en un plazo de 30 a 90 días.", "keys": ["TPM: 6%", "Posible efecto: menor demanda de crédito y consumo", "Impacto en tasas de interés podría verse en 30–90 días"], "image": "https://proceso.hn/wp-content/uploads/2025/06/Nancy-Ochoa-UNAHd-e1786122335687-696x625.jpg"}, {"title": "Sala Constitucional admite amparo de Scherly Arriaga contra el Ministerio Público", "url": "https://oncenoticias.hn/nacionales/sala-constitucional-admite-amparo-scherly-arriaga-ministerio-publico/", "source": "Once Noticias", "date": "25 sep", "category": "Política y gobierno", "summary": "La Sala de lo Constitucional admitió a trámite un amparo presentado por la diputada Scherly Arriaga ante la negativa del Ministerio Público de entregar copia de un expediente de investigación.", "keys": ["La Sala admitió el recurso, pero no resolvió el fondo", "El MP debe remitir antecedentes", "La investigación penal puede continuar"], "image": null}, {"title": "Estados Unidos respalda designación hondureña de tres estructuras criminales como terroristas", "url": "https://www.radiohrn.hn/estados-unidos-destaca-decision-de-honduras-de-declarar-terroristas-a-grupos-criminales-2026-09-25", "source": "Radio HRN", "date": "25 sep · 12:57 p. m.", "category": "Internacional", "summary": "Un funcionario estadounidense destacó la decisión hondureña de declarar como asociaciones terroristas a la MS-13, la Pandilla 18 y el Cártel del Diablo.", "keys": ["Estructuras mencionadas: MS-13, Pandilla 18 y Cártel del Diablo", "Actor externo: Estados Unidos", "Es respaldo diplomático a una decisión hondureña"], "image": null}, {"title": "Reforma energética aprobada aún no había sido publicada en La Gaceta", "url": "https://oncenoticias.hn/nacionales/reformas-energeticas-la-gaceta-gerente-de-la-enee-reacciona-de-este-y-otros-temas-video/", "source": "Once Noticias", "date": "25 sep", "category": "Economía", "summary": "El gerente de la ENEE afirmó que el texto de la reforma energética aprobada no estaba siendo modificado y que se trabajaba en la ruta para implementarla una vez publicada en La Gaceta.", "keys": ["La reforma estaba aprobada pero pendiente de publicación", "ENEE analiza recursos y operación", "El costo internacional del diésel presiona las finanzas del sector"], "image": null}, {"title": "Represas de Tegucigalpa siguen por debajo del 30% pese a las lluvias", "url": "https://oncenoticias.hn/nacionales/alerta-represas-tegucigalpa-debajo-30-pese-a-lluvias/", "source": "Once Noticias", "date": "25 sep", "category": "Ambiente y clima", "summary": "UMAPS reportó que La Concepción se encontraba en 24.74% de su capacidad y Los Laureles en 28.05%, manteniendo presión sobre el suministro de agua del Distrito Central.", "keys": ["La Concepción: 24.74%", "Los Laureles: 28.05%", "La distribución pasó a ciclos de 9–12 días desde el 20 de septiembre"], "image": null}, {"title": "Honduras cae 3-2 ante Surinam en su debut en la Nations League", "url": "https://www.diez.hn/laseleccion/jose-molina-honduras-surinam-conferencia-nations-league-derrota-NG32165822", "source": "Diez", "date": "25 sep · 9:14 p. m.", "category": "Deportes", "summary": "La selección de Honduras perdió 3-2 ante Surinam en Tegucigalpa en el inicio de la Concacaf Nations League. José Francisco Molina reconoció fallas en el manejo del balón.", "keys": ["Resultado: Honduras 2–3 Surinam", "Competencia: Concacaf Nations League", "Debut oficial de José Francisco Molina en el torneo"], "image": null}];const QUIZ=[{"n": 1, "type": "Seguridad y justicia · Proceso Digital", "q": "El reporte de 211 muertes violentas de mujeres proviene de organizaciones de mujeres. ¿Qué debería hacer un periodista antes de compararlo con estadísticas oficiales?", "a": "Verificar metodología, período de corte y definición utilizada por cada fuente. No debe asumirse que una base de organizaciones civiles y una base policial miden exactamente lo mismo.", "url": "https://proceso.hn/honduras-registra-211-muertes-de-mujeres-en-este-2026/", "source": "Proceso Digital"}, {"n": 2, "type": "Economía · Proceso Digital", "q": "¿Por qué subir la TPM a 6% puede contener presiones inflacionarias pero al mismo tiempo encarecer el crédito?", "a": "Una tasa más alta busca moderar demanda y liquidez, pero puede trasladarse a tasas bancarias y volver más costosos ciertos préstamos, reduciendo consumo e inversión financiados.", "url": "https://proceso.hn/subida-de-la-tpm-no-reducira-la-inflacion-pero-si-dilatara-el-proceso-senala-experta-de-la-unah/", "source": "Proceso Digital"}, {"n": 3, "type": "Justicia · La Prensa", "q": "¿Por qué debe distinguirse entre confirmar el comiso de USD 4.2 millones y haber recuperado efectivamente el dinero?", "a": "Porque la resolución establece el derecho del Estado sobre los fondos, pero todavía deben ejecutarse procedimientos para recuperar internacionalmente las cuentas ubicadas en Estados Unidos.", "url": "https://www.laprensa.hn/honduras/corte-confirma-sentencia-ordena-recuperar-4-millones-caso-hospitales-moviles-EF32158941", "source": "La Prensa"}, {"n": 4, "type": "Política y gobierno · Once Noticias", "q": "La Sala Constitucional admitió el amparo de Scherly Arriaga. ¿Por qué sería incorrecto titular que la diputada 'ganó el amparo'?", "a": "Porque admitir el recurso solo significa tramitarlo. La Sala todavía no resolvió el fondo ni determinó si hubo vulneración de derechos.", "url": "https://oncenoticias.hn/nacionales/sala-constitucional-admite-amparo-scherly-arriaga-ministerio-publico/", "source": "Once Noticias"}, {"n": 5, "type": "Deportes · Diez", "q": "Después de la derrota 3-2 ante Surinam, ¿qué datos necesitarías además del marcador para evaluar periodísticamente el rendimiento de Honduras?", "a": "Contexto del torneo, posesión y ocasiones, errores defensivos, cambios tácticos, rendimiento individual, posición en el grupo y próximos rivales.", "url": "https://www.diez.hn/laseleccion/jose-molina-honduras-surinam-conferencia-nations-league-derrota-NG32165822", "source": "Diez"}];let active="Todas";
+const grid=document.getElementById("grid"),featured=document.getElementById("featured"),filters=document.getElementById("filters"),search=document.getElementById("search"),counter=document.getElementById("counter"),empty=document.getElementById("empty");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+function fallback(cat){const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675"><rect width="1200" height="675" fill="#0b263b"/><rect width="1200" height="12" fill="#c2a15b"/><text x="65" y="300" fill="white" font-size="52" font-family="Georgia" font-weight="700">Radar de Actualidad</text><text x="65" y="366" fill="#ddc681" font-size="29" font-family="Arial">${esc(cat)}</text></svg>`;return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg)}
+async function preview(img){if(img.dataset.try==="1"){img.src=fallback(img.dataset.cat);return}img.dataset.try="1";try{const u=img.dataset.url,key="radar:"+u,c=localStorage.getItem(key);if(c){img.src=c;return}const r=await fetch("https://api.microlink.io/?url="+encodeURIComponent(u)+"&filter=image.url");const j=await r.json(),p=j?.data?.image?.url;if(!p)throw 0;localStorage.setItem(key,p);img.src=p}catch(e){img.src=fallback(img.dataset.cat)}}
+function image(a){return `<img src="${esc(a.image||fallback(a.category))}" loading="lazy" referrerpolicy="no-referrer" data-url="${esc(a.url)}" data-cat="${esc(a.category)}" alt="Vista previa de ${esc(a.title)}" onerror="preview(this)">`}
+function drawFeatured(){const a=ARTICLES.find(x=>x.featured)||ARTICLES[0];featured.innerHTML=`<article class="feature"><div class="feature-media">${image(a)}</div><div class="feature-body"><div class="eyebrow">${esc(a.category)} · destacada</div><h2>${esc(a.title)}</h2><p>${esc(a.summary)}</p><div class="meta"><span>${esc(a.source)}</span><span>•</span><span>${esc(a.date)}</span></div><a class="btn" href="${esc(a.url)}" target="_blank">Leer fuente original ↗</a></div></article>`}
+function drawFilters(){const cats=["Todas",...new Set(ARTICLES.map(a=>a.category))];filters.innerHTML=cats.map(c=>`<button class="filter ${c===active?"active":""}" data-c="${esc(c)}">${esc(c)}</button>`).join("");filters.querySelectorAll("button").forEach(b=>b.onclick=()=>{active=b.dataset.c;drawFilters();drawCards()})}
+function drawCards(){const q=search.value.trim().toLowerCase();const list=ARTICLES.filter(a=>(active==="Todas"||a.category===active)&&(!q||[a.title,a.summary,a.source,a.category,...a.keys].join(" ").toLowerCase().includes(q)));grid.innerHTML=list.map(a=>`<article class="card"><div class="thumb">${image(a)}</div><div class="card-body"><div class="card-top"><span class="source">${esc(a.source)} · ${esc(a.category)}</span><span class="date">${esc(a.date)}</span></div><h3>${esc(a.title)}</h3><p>${esc(a.summary)}</p><details class="study"><summary>Claves para estudiar</summary><ul>${a.keys.map(k=>`<li>${esc(k)}</li>`).join("")}</ul></details><a class="btn" href="${esc(a.url)}" target="_blank">Fuente original ↗</a></div></article>`).join("");counter.textContent=`${list.length} de ${ARTICLES.length} noticias`;empty.style.display=list.length?"none":"block"}
+function drawQuiz(){document.getElementById("quizGrid").innerHTML=QUIZ.map(q=>`<article class="q"><div class="qnum">Pregunta ${q.n}</div><div class="qtype">${esc(q.type)}</div><h3>${esc(q.q)}</h3><textarea placeholder="Escribe tu análisis…"></textarea></article>`).join("");document.getElementById("solutions").innerHTML=QUIZ.map(q=>`<div class="solution"><h3>${q.n}. ${esc(q.type)}</h3><p><strong>Respuesta esperada:</strong> ${esc(q.a)}</p><a href="${esc(q.url)}" target="_blank">Abrir fuente — ${esc(q.source)} ↗</a></div>`).join("")}
+search.addEventListener("input",drawCards);drawFeatured();drawFilters();drawCards();drawQuiz();
+</script></body></html>
